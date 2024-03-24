@@ -1,6 +1,9 @@
 package com.aslansari
 
-import com.aslansari.plugins.*
+import com.aslansari.plugins.configureHTTP
+import com.aslansari.plugins.configureRouting
+import com.aslansari.plugins.configureSecurity
+import com.aslansari.plugins.configureSerialization
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*

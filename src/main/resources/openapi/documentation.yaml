@@ -19,5 +19,24 @@ paths:
               examples:
                 Example#1:
                   value: "Hello World!"
+  /api/v1/core/home:
+    get:
+      description: "Home Page"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponseDTO"
 components:
-  schemas: {}
+  schemas:
+    BaseResponseDTO:
+      type: object
+      properties:
+        title:
+          type: string
+          example: "title"
+        message:
+          type: string
+          example: "message"
