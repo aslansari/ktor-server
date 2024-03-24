@@ -13,12 +13,9 @@ paths:
         "200":
           description: "OK"
           content:
-            text/plain:
+            application/json:
               schema:
-                type: "string"
-              examples:
-                Example#1:
-                  value: "Hello World!"
+                $ref: "#/components/schemas/BaseResponseDTO"
   /api/v1/core/home:
     get:
       description: "Home Page"
@@ -29,7 +26,33 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/BaseResponseDTO"
+  /api/v1/core/user/me:
+    get:
+      security:
+        - basicAuth: []
+      description: "User Info"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponseDTO"
+        "401":
+          $ref: '#/components/responses/UnauthorizedError'
+
 components:
+  securitySchemes:
+    basicAuth: # <-- arbitrary name for the security scheme
+      type: http
+      scheme: basic
+  responses:
+    UnauthorizedError:
+      description: Authentication information is missing or invalid
+      headers:
+        WWW_Authenticate:
+          schema:
+            type: string
   schemas:
     BaseResponseDTO:
       type: object

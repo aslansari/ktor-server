@@ -2,6 +2,7 @@ package com.aslansari.plugins
 
 import io.ktor.http.*
 import io.ktor.server.application.*
+import io.ktor.server.auth.*
 import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
@@ -20,6 +21,11 @@ fun Application.configureRouting() {
 
         get("/api/v1/core/home") {
             call.respond(BaseResponseDTO("Horray!","Message is sent from ktor server"))
+        }
+        authenticate("auth-basic") {
+            get("/api/v1/core/user/me") {
+                call.respond(BaseResponseDTO("Horray!","Message is sent from ktor server ${call.principal<UserIdPrincipal>()?.name}"))
+            }
         }
     }
 }
