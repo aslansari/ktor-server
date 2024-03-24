@@ -36,6 +36,7 @@ fun Application.configureRouting() {
         // login route
         post("/api/v1/core/login") {
             val user = call.receive<UserDTO>()
+            // TODO get these values from environment variables
             val jwtAudience = "client"
             val jwtDomain = "ktor-server"
             val jwtSecret = "secret"
