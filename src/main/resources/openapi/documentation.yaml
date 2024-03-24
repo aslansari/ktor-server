@@ -40,12 +40,65 @@ paths:
                 $ref: "#/components/schemas/BaseResponseDTO"
         "401":
           $ref: '#/components/responses/UnauthorizedError'
+  /api/v1/core/login:
+    post:
+      summary: "User Login"
+      description: "Login"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              required:
+                - username
+                - password
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+                    description: JWT access token
+                  tokenType:
+                    type: string
+                    description: Type of token (e.g., "Bearer")
+                  expiresIn:
+                    type: integer
+                    description: Token expiration time in seconds
+  /api/v1/core/user/settings:
+    get:
+      security:
+        - jwtAuth: []
+      description: "User Settings"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponseDTO"
+        "401":
+          $ref: '#/components/responses/UnauthorizedError'
 
 components:
   securitySchemes:
     basicAuth: # <-- arbitrary name for the security scheme
       type: http
       scheme: basic
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   responses:
     UnauthorizedError:
       description: Authentication information is missing or invalid
