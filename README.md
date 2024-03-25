@@ -4,12 +4,20 @@ This project is a Kotlin Ktor server designed as a learning platform for backend
 
 ## Features
 - [x] Basic server setup with Ktor
-- [ ] REST API endpoints for CRUD operations
+- [x] Authentication & Authorization
+- [x] REST API endpoints for CRUD operations
+- [ ] Environment variables for configuration
+- [ ] Error handling
 - [ ] Database integration
-- [ ] Authentication & Authorization
 - [ ] Docker support for containerization
 - [ ] CI/CD pipeline setup
 - [ ] Unit and integration tests
+- [ ] Documentation
+- [ ] Deployment to cloud services
+- [ ] Monitoring and logging
+- [ ] Security best practices
+- [ ] Scalability and performance optimization
+- [ ] Caching
 
 *Note: Features will be updated as the project progresses.*
 
