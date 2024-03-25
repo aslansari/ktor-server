@@ -5,7 +5,14 @@ This project is a Kotlin Ktor server designed as a learning platform for backend
 ## Features
 - [x] Basic server setup with Ktor
 - [x] Authentication & Authorization
-- [x] REST API endpoints for CRUD operations
+- [ ] REST API endpoints for CRUD operations
+    - [ ] Path parameters
+    - [ ] Query parameters
+    - [ ] Request body
+    - [ ] Response body
+    - [ ] Status codes
+    - [ ] Pagination
+- [ ] Session Handling
 - [ ] Environment variables for configuration
 - [ ] Error handling
 - [ ] Database integration
