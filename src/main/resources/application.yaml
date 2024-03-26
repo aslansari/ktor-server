@@ -1,7 +1,16 @@
 ktor:
-  development: true
   deployment:
     port: 8080
   application:
     modules:
       - com.aslansari.ApplicationKt.module
+#  db:
+#    host: "jdbc:postgresql://0.0.0.0:5432/postgres"
+#    user: "postgres"
+#    password: "postgres"
+#    pool: 5
+  db:
+    host: $POSTGRES_HOST
+    user: $POSTGRES_USER
+    password: $POSTGRES_PASSWORD
+    pool: $POSTGRES_POOL

@@ -1,5 +1,8 @@
 package com.aslansari.plugins
 
+import com.aslansari.dao.DBFactory
+import com.aslansari.dao.TaskDao
+import com.aslansari.task
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
 import io.ktor.http.*
@@ -62,6 +65,12 @@ fun Application.configureRouting() {
                 val expiresAt = principal.expiresAt?.time?.minus(System.currentTimeMillis())
                 call.respondText("Hello, $username! Token is expired at $expiresAt ms.")
             }
+        }
+
+        environment?.let {
+            DBFactory.init(it)
+            val taskDao = TaskDao()
+            task(taskDao)
         }
     }
 }
