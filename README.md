@@ -8,15 +8,16 @@ This project is a Kotlin Ktor server designed as a learning platform for backend
 - [ ] REST API endpoints for CRUD operations
     - [ ] Path parameters
     - [ ] Query parameters
-    - [ ] Request body
-    - [ ] Response body
+    - [x] Request body
+    - [x] Response body
     - [ ] Status codes
     - [ ] Pagination
+    - [ ] User Specific Data
 - [ ] Session Handling
-- [ ] Environment variables for configuration
+- [x] Environment variables for configuration
 - [ ] Error handling
-- [ ] Database integration
-- [ ] Docker support for containerization
+- [x] Database integration
+- [x] Docker support for containerization
 - [ ] CI/CD pipeline setup
 - [ ] Unit and integration tests
 - [ ] Documentation
@@ -63,6 +64,22 @@ The server should start, and you'll be able to access it at `http://localhost:80
 ## Usage
 
 Once the server is running, you can make HTTP requests to the available endpoints. *Endpoints will be documented as they are developed.*
+
+## Docker
+
+To run the server in a Docker container, follow these steps:
+
+1. Build Fat JAR
+
+```bash
+gradle buildFatJar
+```
+
+2. Compose Docker image
+
+```bash
+docker compose up
+```
 
 ## Contributing
 
