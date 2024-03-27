@@ -5,6 +5,9 @@ info:
   version: "1.0.0"
 servers:
   - url: "http://0.0.0.0:8080"
+tags:
+  - name: "tasks"
+    description: "Task operations"
 paths:
   /:
     get:
@@ -89,6 +92,110 @@ paths:
                 $ref: "#/components/schemas/BaseResponseDTO"
         "401":
           $ref: '#/components/responses/UnauthorizedError'
+
+  /api/v1/tasks:
+    get:
+      tags:
+        - "tasks"
+      description: "Get all tasks"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    description:
+                      type: string
+                    status:
+                      type: string
+                      enum: [ "PENDING", "IN_PROGRESS", "DONE" ]
+                    createdDate:
+                      type: long?
+  /api/v1/tasks/{id}:
+    get:
+      tags:
+        - "tasks"
+      description: "Get task by id"
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  description:
+                    type: string
+                  status:
+                    type: string
+                    enum: [ "PENDING", "IN_PROGRESS", "DONE" ]
+                  createdDate:
+                    type: long?
+        "404":
+          description: "Task not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponseDTO"
+  /api/v1/tasks/create:
+    post:
+      tags:
+        - "tasks"
+      description: "Create a new task"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                details:
+                  type: string
+      responses:
+        "201":
+          description: "Created"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  details:
+                    type: string
+                  status:
+                    type: string
+                    enum: [ "PENDING", "IN_PROGRESS", "DONE" ]
+                  createdDate:
+                    type: long?
+        "400":
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseResponseDTO"
 
 components:
   securitySchemes:

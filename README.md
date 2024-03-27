@@ -26,6 +26,7 @@ This project is a Kotlin Ktor server designed as a learning platform for backend
 - [ ] Security best practices
 - [ ] Scalability and performance optimization
 - [ ] Caching
+- [ ] Rate Limiting
 
 *Note: Features will be updated as the project progresses.*
 
